@@ -364,6 +364,13 @@ a {
   overflow: hidden;
 }
 
+.photo-strip .photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
 .photo-strip .caption {
   position: absolute;
   bottom: 12px;
@@ -380,18 +387,7 @@ a {
 .strip-2 { top: 12%; right: 5%; transform: rotate(6deg); z-index: 3; }
 .strip-3 { bottom: 0; left: 30%; transform: rotate(-3deg); z-index: 1; }
 
-.strip-1 .photo:nth-child(1) { background: linear-gradient(135deg, #8833ff, #5511cc); }
-.strip-1 .photo:nth-child(2) { background: linear-gradient(135deg, #100d1a, #211c33); }
-.strip-1 .photo:nth-child(3) { background: linear-gradient(135deg, #00ccff, #0099cc); }
 .strip-1 .caption { color: var(--magenta); }
-
-.strip-2 .photo:nth-child(1) { background: linear-gradient(135deg, #211c33, #100d1a); }
-.strip-2 .photo:nth-child(2) { background: linear-gradient(135deg, #8833ff, #6611cc); }
-.strip-2 .photo:nth-child(3) { background: linear-gradient(135deg, #100d1a, #1a1230); }
-
-.strip-3 .photo:nth-child(1) { background: linear-gradient(135deg, #00ccff, #0077aa); }
-.strip-3 .photo:nth-child(2) { background: linear-gradient(135deg, #6611cc, #8833ff); }
-.strip-3 .photo:nth-child(3) { background: linear-gradient(135deg, #211c33, #100d1a); }
 
 /* ---------- Trusted Bar ---------- */
 
@@ -561,7 +557,7 @@ section.block {
 
 .events-split {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
   gap: 24px;
 }
 
@@ -595,6 +591,13 @@ section.block {
     radial-gradient(circle at 60% 30%, rgba(136, 51, 255, 0.5), transparent 50%),
     radial-gradient(circle at 30% 70%, rgba(0, 204, 255, 0.3), transparent 50%),
     linear-gradient(135deg, #100d1a, #1a1230);
+}
+
+.event-img.private {
+  background:
+    radial-gradient(circle at 40% 30%, rgba(255, 200, 87, 0.35), transparent 50%),
+    radial-gradient(circle at 70% 70%, rgba(0, 204, 255, 0.25), transparent 50%),
+    linear-gradient(135deg, #241c2e, #100d1a);
 }
 
 .event-img::after {
@@ -1292,6 +1295,7 @@ footer .brand-block > p {
   .services-grid { grid-template-columns: repeat(2, 1fr); }
   .steps { grid-template-columns: repeat(2, 1fr); gap: 48px; }
   .footer-grid { grid-template-columns: 1fr 1fr; }
+  .events-split { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 768px) {
