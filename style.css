@@ -256,6 +256,32 @@ a {
   color: var(--ink);
 }
 
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 32px;
+  height: 32px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.nav-toggle span {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background: var(--cream);
+  border-radius: 2px;
+  transition: transform 0.3s, opacity 0.3s;
+}
+
+.nav-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-toggle.open span:nth-child(2) { opacity: 0; }
+.nav-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
 /* ---------- Hero ---------- */
 
 .hero {
@@ -685,7 +711,6 @@ section.block {
 
 .gallery-marquee {
   overflow: hidden;
-  margin: 0 -32px;
 }
 
 .marquee-track {
@@ -1012,6 +1037,10 @@ details[open] .plus {
   align-items: start;
 }
 
+.contact-grid > * {
+  min-width: 0;
+}
+
 .contact h2 {
   color: var(--cream);
 }
@@ -1041,6 +1070,11 @@ details[open] .plus {
   padding: 24px 0;
   border-top: 1px solid rgba(217, 207, 192, 0.1);
   transition: padding 0.2s;
+  min-width: 0;
+}
+
+.contact-method > div:last-child {
+  min-width: 0;
 }
 
 .contact-method:hover {
@@ -1076,6 +1110,7 @@ details[open] .plus {
   font-size: 22px;
   font-weight: 500;
   color: var(--cream);
+  overflow-wrap: anywhere;
 }
 
 .contact-method:hover .value {
@@ -1107,6 +1142,7 @@ details[open] .plus {
   display: flex;
   flex-direction: column;
   gap: 6px;
+  min-width: 0;
 }
 
 .field.full {
@@ -1266,7 +1302,38 @@ footer .brand-block > p {
 
 @media (max-width: 768px) {
   .container { padding: 0 20px; }
-  .nav-links { display: none; }
+  .nav-toggle { display: flex; }
+  .nav-links {
+    flex-direction: column;
+    gap: 0;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--ink);
+    border-bottom: 1px solid rgba(136, 51, 255, 0.2);
+    box-shadow: 0 12px 24px rgba(8, 6, 16, 0.35);
+    max-height: 0;
+    overflow: hidden;
+    visibility: hidden;
+    transition: max-height 0.3s ease;
+  }
+  .nav-links.open {
+    max-height: 400px;
+    visibility: visible;
+  }
+  .nav-links li {
+    width: 100%;
+  }
+  .nav-links a {
+    display: block;
+    padding: 16px 20px;
+    font-size: 16px;
+    border-top: 1px solid rgba(217, 207, 192, 0.08);
+  }
+  .nav-links li:first-child a {
+    border-top: none;
+  }
   .nav-cta .phone-link { display: none; }
   section.block { padding: 80px 0; }
   .hero-grid,
