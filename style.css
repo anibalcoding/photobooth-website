@@ -713,11 +713,19 @@ section.block {
   overflow: hidden;
 }
 
+.gallery-marquee + .gallery-marquee {
+  margin-top: 24px;
+}
+
 .marquee-track {
   display: flex;
   gap: 16px;
   animation: marquee 40s linear infinite;
   width: max-content;
+}
+
+.marquee-track.reverse {
+  animation-direction: reverse;
 }
 
 @keyframes marquee {
