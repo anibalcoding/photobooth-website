@@ -598,6 +598,20 @@ section.block {
     linear-gradient(135deg, #241c2e, #100d1a);
 }
 
+.event-img img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* portrait source in a 16:10 slot, frame on the faces */
+.event-img.wedding img { object-position: center 15%; }
+.event-img.private img { object-position: center 25%; }
+.event-img.corporate img { object-position: center 35%; }
+
 .event-img::after {
   content: "";
   position: absolute;
@@ -1362,4 +1376,37 @@ footer .brand-block > p {
   .booking-form { padding: 32px 24px; }
   .footer-grid { grid-template-columns: 1fr; gap: 32px; }
   .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
+
+  /* Services: single-column horizontal cards, full-width text instead of
+     a 103px column that wraps every heading onto three lines */
+  .services-grid { grid-template-columns: 1fr; gap: 12px; }
+  .service-card {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-areas: "icon title" "icon text";
+    column-gap: 14px;
+    row-gap: 4px;
+    align-items: start;
+    padding: 18px;
+    border-radius: 14px;
+  }
+  .service-card .num { display: none; }
+  .service-icon {
+    grid-area: icon;
+    width: 40px;
+    height: 40px;
+    margin-bottom: 0;
+  }
+  .service-icon svg { width: 20px; height: 20px; }
+  .service-card h3 {
+    grid-area: title;
+    font-size: 17px;
+    line-height: 1.25;
+    margin-bottom: 0;
+  }
+  .service-card p {
+    grid-area: text;
+    font-size: 13.5px;
+    line-height: 1.5;
+  }
 }
